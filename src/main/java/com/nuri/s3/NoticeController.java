@@ -43,7 +43,10 @@ public class NoticeController {
 		int result = noticeService.noticeInsert(noticeVO);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("dto", noticeVO);
-		String msg = "Success";
+		String msg = "Fail";
+		if(result>0) {
+			msg = "Success";
+		}
 		mv.addObject("msg", msg);
 		mv.addObject("path", "noticeList");
 		mv.setViewName("common/common_result");
@@ -60,7 +63,10 @@ public class NoticeController {
 	public ModelAndView noticeUpdate(NoticeVO noticeVO) throws Exception{
 		int result = noticeService.noticeUpdate(noticeVO);
 		ModelAndView mv = new ModelAndView();
-		String msg = "Success";
+		String msg = "Fail";
+		if(result>0) {
+			msg = "Success";
+		}
 		mv.addObject("msg", msg);
 		mv.addObject("path", "noticeList");
 		mv.setViewName("common/common_result");
@@ -71,7 +77,10 @@ public class NoticeController {
 	public ModelAndView noticeDelete(int num) throws Exception{
 		int result = noticeService.noticeDelete(num);
 		ModelAndView mv = new ModelAndView();
-		String msg = "Success";
+		String msg = "Fail";
+		if(result>0) {
+			msg = "Success";
+		}
 		mv.addObject("msg", msg);
 		mv.addObject("path", "noticeList");
 		mv.setViewName("common/common_result");
