@@ -26,14 +26,19 @@ public class NoticeDAO {
 		return sqlSession.insert(NAMESPACE+"noticeInsert", noticeVO);
 	}
 	
+	public int noticeCount() throws Exception{
+		
+		return sqlSession.selectOne(NAMESPACE+"noticeCount");
+	}
+	
 	public NoticeVO noticeSelect(int num)throws Exception {
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("num", num);
 		return sqlSession.selectOne(NAMESPACE+"noticeSelect", map);
 	}
 	
-	public List<NoticeVO> noticeList()throws Exception{
-		return sqlSession.selectList(NAMESPACE+"noticeList");
+	public List<NoticeVO> noticeList(Map<String, Integer> map)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"noticeList", map);
 	}
 	
 	public int noticeUpdate(NoticeVO noticeVO) throws Exception{

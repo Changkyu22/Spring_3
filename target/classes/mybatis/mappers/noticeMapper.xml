@@ -13,12 +13,19 @@
   		delete notice where num = #{num}
   	</delete>
   	
+  	<select id="noticeCount" resultType="java.lang.Integer">
+	  	select count(num) from notice
+  	</select>
+  	
   	<select id="noticeSelect" parameterType="java.util.Map" resultType="com.nuri.s3.model.board.NoticeVO">
   		select * from notice where num = #{num}
   	</select>
   	
-  	<select id="noticeList" resultType="com.nuri.s3.model.board.NoticeVO">
-  		select * from notice order by num desc
+  	<select id="noticeList" parameterType="java.util.Map" resultType="com.nuri.s3.model.board.NoticeVO">
+  		select * from
+			(select N.*, rownum R from
+				(select * from notice order by num desc) N)
+		where R between #{startRow} and #{lastRow}
   	</select>
   	
   	<update id="noticeUpdate" parameterType="com.nuri.s3.model.board.NoticeVO">
