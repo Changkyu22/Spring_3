@@ -54,6 +54,12 @@ public class NoticeService {
 			totalPage ++;
 		}
 		
+		// 3. totalBlock 개수
+		int totalBlock = totalPage / 5; 
+		if(totalPage%5 != 0) {
+			totalBlock ++;
+		}
+		
 		Map<String, Object> map2 = new HashMap<String, Object>();
 		map2.put("totalPage", totalPage);
 		map2.put("list", noticeDAO.noticeList(map));
