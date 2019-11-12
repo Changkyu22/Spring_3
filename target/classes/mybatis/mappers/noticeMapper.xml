@@ -13,18 +13,41 @@
   		delete notice where num = #{num}
   	</delete>
   	
-  	<select id="noticeCount" resultType="java.lang.Integer">
+  	<select id="noticeCount" resultType="java.lang.Integer" parameterType="com.nuri.s3.util.Pager">
 	  	select count(num) from notice
+	  	<choose>
+				<when test="kind == 'kt'">
+					where title like '%'||#{search}||'%'
+				</when>
+				<when test="kind == 'kw'">
+					where writer like '%'||#{search}||'%'
+				</when>
+				<otherwise>
+					where contents like	'%'||#{search}||'%'
+				</otherwise>
+			</choose>	
   	</select>
   	
   	<select id="noticeSelect" parameterType="java.util.Map" resultType="com.nuri.s3.model.board.NoticeVO">
   		select * from notice where num = #{num}
   	</select>
   	
-  	<select id="noticeList" parameterType="com.nuri.s3.util.RowMaker" resultType="com.nuri.s3.model.board.NoticeVO">
+  	<select id="noticeList" parameterType="com.nuri.s3.util.Pager" resultType="com.nuri.s3.model.board.NoticeVO">
   		select * from
 			(select N.*, rownum R from
-				(select * from notice order by num desc) N)
+				(select * from notice 
+				<choose>
+					<when test="kind == 'kt'">
+						where title like '%'||#{search}||'%'
+					</when>
+					<when test="kind == 'kw'">
+						where writer like '%'||#{search}||'%'
+					</when>
+					<when test="kind == 'kc'">
+						where contents like '%'||#{search}||'%'
+					</when>
+				</choose>
+				order by num desc) N)
 		where R between #{startRow} and #{lastRow}
   	</select>
   	

@@ -25,11 +25,15 @@ public class NoticeController {
 	private NoticeService noticeService;
 	
 	// list : /notice/noticeList GET
-	@RequestMapping(value = "noticeList")
-	public void noticeList(Model model, Pager pager)throws Exception {
+	@RequestMapping(value = "noticeList", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView noticeList(Pager pager)throws Exception {
 		List<NoticeVO> ar = noticeService.noticeList(pager);
-		model.addAttribute("list", ar);
-		model.addAttribute("pager", pager);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("list", ar);
+		mv.addObject("pager", pager);
+		mv.setViewName("notice/noticeList");
+		return mv;
+		
 	}
 	
 	@RequestMapping(value = "noticeSelect")

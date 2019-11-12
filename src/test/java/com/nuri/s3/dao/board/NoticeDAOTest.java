@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import com.nuri.s3.TestAbstractCase;
 import com.nuri.s3.model.board.NoticeVO;
+import com.nuri.s3.util.Pager;
 
 public class NoticeDAOTest extends TestAbstractCase {
 
@@ -17,8 +18,8 @@ public class NoticeDAOTest extends TestAbstractCase {
 	private NoticeDAO noticeDAO;
 	
 	@Test
-	public void noticeCountTest() throws Exception{
-		int count = noticeDAO.noticeCount();
+	public void noticeCountTest(Pager pager) throws Exception{
+		int count = noticeDAO.noticeCount(pager);
 		assertEquals(111, count);
 	}
 	
@@ -51,10 +52,10 @@ public class NoticeDAOTest extends TestAbstractCase {
 	}
 	
 	//@Test
-	public void noticeList() throws Exception{
-		List<NoticeVO> list = noticeDAO.noticeList();
-		assertNotNull(list.size()); 
-	}
+//	public void noticeList() throws Exception{
+//		List<NoticeVO> list = noticeDAO.noticeList();
+//		assertNotNull(list.size()); 
+//	}
 	
 	//@Test
 	public void noticeUpdate() throws Exception{

@@ -45,19 +45,40 @@
 	    	</c:forEach>
 	    </tbody>
 	  </table>
+		  <div>
+		  	<form action="./noticeList">
+		  	<input type="hidden" id="curPage" value="1">
+		  		<select id="kind">
+		  			<option id="kt" value="kt">TITLE</option>
+		  			<option id="kw" value="kw">WRITER</option>
+		  			<option id="kc" value="kc">CONTENTS</option>
+		  		</select>
+		  		<input type="text" id="search" value="${pager.search}">
+		  		<button>검색</button>
+		  	</form>
+		  </div>
 	  <div>
 	 	 <ul class="pagination">
 		 	 <c:if test="${pager.curBlock gt 1}">
-			 	 <li><a href="./noticeList?curPage=${pager.startNum-1 }">이전</a></li>
+			 	 <li><a href="./noticeList?curPage=${pager.startNum-1}">이전</a></li>
 		 	 </c:if>
 			  	<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-				  	<li><a href="./noticeList?curPage=${i}">${i}</a></li>
+				  	<li><a href="./noticeList?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
 			  	</c:forEach>
 			 <c:if test="${pager.curBlock lt pager.totalBlock }">
 				 <li><a href="./noticeList?curPage=${pager.lastNum+1 }">다음</a></li>		 
 			 </c:if>
 	  	 </ul>
 	  </div>
+	  
+	  <script type="text/javascript">
+	  	var kind = '${pager.kind}'
+		if(kind == ''){
+			kind = "kt";
+		}
+		$("#"+kind).prop("selected", true)
+	  
+	  </script>
 	  <a href="./noticeWrite">Write</a>
 	 </div>	
 </body>

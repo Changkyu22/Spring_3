@@ -1,6 +1,5 @@
 package com.nuri.s3.service.board;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.nuri.s3.dao.board.NoticeDAO;
 import com.nuri.s3.model.board.NoticeVO;
 import com.nuri.s3.util.Pager;
-import com.nuri.s3.util.RowMaker;
 
 @Service
 public class NoticeService {
@@ -41,11 +39,10 @@ public class NoticeService {
 	
 	//list
 	public List<NoticeVO> noticeList(Pager pager)throws Exception{
-		RowMaker rowMaker = pager.makeRow();
-		pager.makePager(noticeDAO.noticeCount());
+		pager.makeRow();
+		pager.makePager(noticeDAO.noticeCount(pager));
 		
-		
-		return noticeDAO.noticeList(rowMaker);
+		return noticeDAO.noticeList(pager);
 	}
 	
 }
