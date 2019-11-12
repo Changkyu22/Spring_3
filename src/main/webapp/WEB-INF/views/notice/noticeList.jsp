@@ -46,8 +46,8 @@
 	    </tbody>
 	  </table>
 		  <div>
-		  	<form action="./noticeList">
-		  	<input type="hidden" id="curPage" value="1">
+		  	<form action="./noticeList" id="frm">
+		  	<input type="hidden" id="curPage" value="1" name="curPage">
 		  		<select id="kind">
 		  			<option id="kt" value="kt">TITLE</option>
 		  			<option id="kw" value="kw">WRITER</option>
@@ -60,13 +60,16 @@
 	  <div>
 	 	 <ul class="pagination">
 		 	 <c:if test="${pager.curBlock gt 1}">
-			 	 <li><a href="./noticeList?curPage=${pager.startNum-1}">이전</a></li>
+		 	 	<li><span id="${pager.startNum-1}" class="list">이전</span></li>
+<%-- 			 	<li><a href="./qnaList?curPage=${pager.startNum-1}">이전</a></li> --%>
 		 	 </c:if>
-			  	<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-				  	<li><a href="./noticeList?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
-			  	</c:forEach>
-			 <c:if test="${pager.curBlock lt pager.totalBlock }">
-				 <li><a href="./noticeList?curPage=${pager.lastNum+1 }">다음</a></li>		 
+			 <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+			 	<li><span id="${i}" class="list">${i}</span></li>
+<%-- 				<li><a href="./qnaList?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li> --%>
+			 </c:forEach>
+			 <c:if test="${pager.curBlock lt pager.totalBlock}">
+			 	<li><span id="${pager.lastNum+1}" class="list">다음</span></li>
+<%-- 				<li><a href="./qnaList?curPage=${pager.lastNum+1 }">다음</a></li>		  --%>
 			 </c:if>
 	  	 </ul>
 	  </div>
@@ -76,7 +79,11 @@
 		if(kind == ''){
 			kind = "kt";
 		}
-		$("#"+kind).prop("selected", true)
+		$("#"+kind).prop("selected", true);
+	 	$(".list").click(function() {
+			$("#curPage").val($(this).attr("id"));
+			$("#frm").submit();
+		});
 	  
 	  </script>
 	  <a href="./noticeWrite">Write</a>

@@ -8,7 +8,6 @@ import javax.inject.Inject;
 
 import org.junit.Test;
 
-import com.nuri.s3.TestAbstractCase;
 import com.nuri.s3.model.board.NoticeVO;
 import com.nuri.s3.util.Pager;
 
