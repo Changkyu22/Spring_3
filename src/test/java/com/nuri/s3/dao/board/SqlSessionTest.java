@@ -1,4 +1,4 @@
-package com.nuri.s3;
+package com.nuri.s3.dao.board;
 
 import static org.junit.Assert.*;
 
