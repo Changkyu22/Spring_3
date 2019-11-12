@@ -17,10 +17,6 @@
 </head>
 <body>
 	<c:import url="../layout/nav.jsp" />
-<!-- 	<h1>Notice List Page</h1> -->
-<!-- 	<img alt="" src="../resources/images/park2.jpg"> -->
-<!-- 	<a href="./noticeSelect?n=33">Select One Page</a> -->
-<!-- 	<a href="./noticeWrite">Notice Write</a></body> -->
 	<div class="container">
   		<div class="jumbotron">
     		<h1>QnA List Page</h1>
@@ -49,12 +45,23 @@
 	    </tbody>
 	  </table>
 	  <div>
+		<form action="./qnaList">
+			<select name="kind">
+				<option value="kt">TITLE</option>
+				<option value="kc">CONTENTS</option>
+				<option value="kw">WRITER</option>
+			</select>
+			<input type="text" name="search">
+			<button>검색</button>
+		</form>
+	</div>
+	  <div>
 	 	 <ul class="pagination">
 		 	 <c:if test="${pager.curBlock gt 1}">
 			 	 <li><a href="./qnaList?curPage=${pager.startNum-1 }">이전</a></li>
 		 	 </c:if>
 			  	<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-				  	<li><a href="./qnaList?curPage=${i}">${i}</a></li>
+				  	<li><a href="./qnaList?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
 			  	</c:forEach>
 			 <c:if test="${pager.curBlock lt pager.totalBlock }">
 				 <li><a href="./qnaList?curPage=${pager.lastNum+1 }">다음</a></li>		 

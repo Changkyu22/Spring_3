@@ -6,7 +6,7 @@ public class QnaVO {
 	private int num;
 	private String title;
 	private String writer;
-	private String contetns;
+	private String contents;
 	private Date reg_date;
 	private int hit;
 	private int ref;
@@ -31,11 +31,11 @@ public class QnaVO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public String getContetns() {
-		return contetns;
+	public String getContents() {
+		return contents;
 	}
-	public void setContetns(String contetns) {
-		this.contetns = contetns;
+	public void setContents(String contents) {
+		this.contents = contents;
 	}
 	public Date getReg_date() {
 		return reg_date;

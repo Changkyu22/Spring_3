@@ -23,19 +23,20 @@ public class Qnatest extends TestAbstractCase {
 //		assertNotEquals(10, ar.size());
 //	}
 	
-	@Test
+	//@Test
 	public void QnaDAO() throws Exception{
 		assertNotNull(qnaDAO);
 	}
 	
-	//@Test
-	public void insertTest()throws Exception {
-		for(int i=0; i<120; i++) {
+	@Test
+	public void qnaInsertTest()throws Exception {
+		for(int i=0; i<110; i++) {
 			QnaVO qnaVO = new QnaVO();
 			qnaVO.setTitle("nuri"+i);
 			qnaVO.setWriter("CK"+i);
-			qnaVO.setContetns("nurinuri"+i);
-			int result = qnaDAO.qnaInsert(qnaVO);
+			qnaVO.setContents("nurinuri"+i);
+			qnaDAO.qnaInsert(qnaVO);
+			Thread.sleep(300);
 		}
 
 	}

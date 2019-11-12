@@ -15,7 +15,26 @@ public class Pager {
 	private Integer curBlock; // 현재 블럭 번호
 	private Integer totalBlock; // 전체 블럭 개수
 	
+	// List의 kind와 search를  받아오도록 설정
+	private String kind;	// 검색종류
+	private String search;	// 검색어
 	
+	
+	public String getKind() {
+		return kind;
+	}
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+	public String getSearch() {
+		if(search == null) {
+			search = "";
+		}
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
 	public Integer getStartNum() {
 		return startNum;
 	}
