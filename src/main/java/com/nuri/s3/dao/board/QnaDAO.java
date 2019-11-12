@@ -30,8 +30,8 @@ public class QnaDAO {
 //		return sqlSession.selectOne(NAMESPACE+"qnaSelect", map);
 //	}
 	
-	public int qnaCount()throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"qnaCount");
+	public int qnaCount(Pager pager)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"qnaCount", pager);
 	}
 	
 	public int qnaInsert(QnaVO qnaVO)throws Exception {

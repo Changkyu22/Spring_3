@@ -20,7 +20,7 @@ public class QnaService {
 		// DB를 보내기 위해 rownum을 계산
 		pager.makeRow();
 //		int count = qnaDAO.qnaCount(); --> count라는 변수로 여러번 쓸 때 
-		pager.makePage(qnaDAO.qnaCount());
+		pager.makePage(qnaDAO.qnaCount(pager));
 		
 		return qnaDAO.qnaList(pager);
 	}
