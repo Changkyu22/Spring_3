@@ -34,7 +34,22 @@ public class QnaDAO {
 		return sqlSession.selectOne(NAMESPACE+"qnaCount", pager);
 	}
 	
-	public int qnaInsert(QnaVO qnaVO)throws Exception {
-		return sqlSession.insert(NAMESPACE+"qnaInsert", qnaVO);
+	public int qnaWrite(QnaVO qnaVO)throws Exception {
+		return sqlSession.insert(NAMESPACE+"qnaWrite", qnaVO);
 	}
+	
+	public QnaVO qnaSelect(int num)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"qnaSelect", num);
+	}
+	
+	public int qnaReply(QnaVO qnaVO)throws Exception {
+		return sqlSession.insert(NAMESPACE+"qnaReply", qnaVO);
+	}
+	
+	public int qnaUpdate(QnaVO qnaVO) throws Exception{
+		return sqlSession.update(NAMESPACE+"qnaReplyUpdate", qnaVO);
+	}
+	
+	
+	
 }

@@ -53,8 +53,7 @@
 		  			<option id="kw" value="kw">WRITER</option>
 		  			<option id="kc" value="kc">CONTENTS</option>
 		  		</select>
-		  		<input type="text" id="search" value="${pager.search}">
-		  		
+		  		<input type="text" id="search" name="search" value="${pager.search}">
 		  		<button>검색</button>
 		  	</form>
 		  </div>
@@ -62,21 +61,19 @@
 	 	 <ul class="pagination">
 		 	 <c:if test="${pager.curBlock gt 1}">
 		 	 	<li><span id="${pager.startNum-1}" class="list">이전</span></li>
-<%-- 			 	<li><a href="./qnaList?curPage=${pager.startNum-1}">이전</a></li> --%>
 		 	 </c:if>
 			 <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
 			 	<li><span id="${i}" class="list">${i}</span></li>
-<%-- 				<li><a href="./qnaList?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li> --%>
 			 </c:forEach>
 			 <c:if test="${pager.curBlock lt pager.totalBlock}">
 			 	<li><span id="${pager.lastNum+1}" class="list">다음</span></li>
-<%-- 				<li><a href="./qnaList?curPage=${pager.lastNum+1 }">다음</a></li>		  --%>
 			 </c:if>
 	  	 </ul>
 	  </div>
 	  
+	 </div>	
 	  <script type="text/javascript">
-	  	var kind = '${pager.kind}'
+	  	var kind = '#${pager.kind}'
 		if(kind == ''){
 			kind = "kt";
 		}
@@ -85,9 +82,8 @@
 			$("#curPage").val($(this).attr("id"));
 			$("#frm").submit();
 		});
-	  
 	  </script>
-	  <a href="./noticeWrite">Write</a>
-	 </div>	
+		  <a href="./noticeWrite">Write</a>
+	  
 </body>
 </html>

@@ -16,6 +16,10 @@ public class QnaService {
 	@Inject
 	private QnaDAO qnaDAO;
 	
+	public int qnaWrite(QnaVO qnaVO) throws Exception{
+		return qnaDAO.qnaWrite(qnaVO);
+	}
+	
 	public List<QnaVO> qnaList(Pager pager) throws Exception{
 		// DB를 보내기 위해 rownum을 계산
 		pager.makeRow();
@@ -25,11 +29,25 @@ public class QnaService {
 		return qnaDAO.qnaList(pager);
 	}
 	
+	public QnaVO qnaSelect(int num) throws Exception{
+		return qnaDAO.qnaSelect(num);
+	}
+	
 //	public QnaVO qnaSelect(int num) throws Exception{
 //		return qnaDAO.qnaSelect(num);
 //	}
 	
-	public int qnaInsert(QnaVO qnaVO) throws Exception{
-		return qnaDAO.qnaInsert(qnaVO);
+	public int qnaReply(QnaVO qnaVO)throws Exception{
+		// update 
+		// 부모의 정보
+		QnaVO parent = qnaDAO.qnaSelect(qnaVO.getNum());
+		int result = qnaDAO.qnaUpdate(parent);
+		qnaVO.setRef(parent.getRef());
+		qnaVO.setStep(parent.getStep()+1);
+		qnaVO.setDepth(parent.getDepth()+1);
+		qnaDAO.qnaReply(qnaVO);
+		return result;
 	}
+	
+	
 }

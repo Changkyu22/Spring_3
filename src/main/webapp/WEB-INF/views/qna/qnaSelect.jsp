@@ -17,8 +17,7 @@
 </head>
 <body>
 	<c:import url="../layout/nav.jsp" />
-	<h1>Notice Select Page</h1>
-	<img alt="" src="../resources/images/park2.jpg">
+	<h1>QnA Select Page</h1>
 	<div class="container">
 		<table class="table">
 			<thead>
@@ -42,8 +41,10 @@
     		</div>
   			</form>
   			
-  			<a href="./noticeUpdate.notice?num=${requestScope.dto.num}">Update</a>
-  			<a href="./noticeDelete.notice?num=${requestScope.dto.num}">Delete</a>
+  			<a href="./qnaUpdate.notice?num=${requestScope.dto.num}" class="btn btn-default">Update</a>
+  			<a href="./qnaDelete.notice?num=${requestScope.dto.num}" class="btn btn-default">Delete</a>
+  			<a href="./qnaReply.notice?num=${requestScope.dto.num}" class="btn btn-default">Reply</a>
+  			<a href="./qnaList?num=${requestScope.dto.num}" class="btn btn-default">List</a>
   			
   		</div>
 	</div>

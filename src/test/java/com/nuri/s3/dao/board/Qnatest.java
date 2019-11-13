@@ -28,16 +28,16 @@ public class Qnatest extends TestAbstractCase {
 		assertNotNull(qnaDAO);
 	}
 	
-	@Test
-	public void qnaInsertTest()throws Exception {
-		for(int i=0; i<110; i++) {
-			QnaVO qnaVO = new QnaVO();
-			qnaVO.setTitle("nuri"+i);
-			qnaVO.setWriter("CK"+i);
-			qnaVO.setContents("nurinuri"+i);
-			qnaDAO.qnaInsert(qnaVO);
-			Thread.sleep(300);
-		}
+//	@Test
+//	public void qnaInsertTest()throws Exception {
+//		for(int i=0; i<110; i++) {
+//			QnaVO qnaVO = new QnaVO();
+//			qnaVO.setTitle("nuri"+i);
+//			qnaVO.setWriter("CK"+i);
+//			qnaVO.setContents("nurinuri"+i);
+//			qnaDAO.qnaInsert(qnaVO);
+//			Thread.sleep(300);
+//		}
 
 	}
-}
+

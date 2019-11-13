@@ -33,7 +33,9 @@
 	    	<c:forEach items="${list}" var="dto" varStatus="st">
 		      <tr>
 		        <td>${dto.num}</td>
-		        <td><a href="./qnaSelect?num=${dto.num}">${dto.title}</a></td>
+		        <td>
+		        <c:forEach begin="1" end="${dto.depth}">--</c:forEach>
+		        	 <a href="./qnaSelect?num=${dto.num}">${dto.title}</a></td>
 		        <td>${dto.writer}</td>
 		        <td>${dto.reg_date}</td>
 		        <td>${dto.hit}</td>
@@ -72,7 +74,9 @@
 			 </c:if>
 	  	 </ul>
 	  </div>
-	  <a href="./qnaWrite">Write</a>
+	  <div>
+		  <a href="./qnaWrite">Write</a>
+	  </div>
 	 </div>	
 	 
 	 <script type="text/javascript">
