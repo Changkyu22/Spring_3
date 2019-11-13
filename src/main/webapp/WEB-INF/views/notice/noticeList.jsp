@@ -54,6 +54,7 @@
 		  			<option id="kc" value="kc">CONTENTS</option>
 		  		</select>
 		  		<input type="text" id="search" value="${pager.search}">
+		  		
 		  		<button>검색</button>
 		  	</form>
 		  </div>
